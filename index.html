@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIP UP MEDIA | Powered by Clubzone</title>
+    <title>SIP UP MEDIA | Back to the Grounds 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,7 +14,7 @@
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); scroll-behavior: smooth; }
 
         body {
             margin: 0;
@@ -43,66 +43,89 @@
             border-bottom: 1px solid var(--glass-border);
         }
 
-        .logo { font-family: 'Syncopate', sans-serif; font-size: 0.9rem; color: var(--cyan); }
+        .logo { font-family: 'Syncopate', sans-serif; font-size: 0.9rem; color: var(--cyan); text-decoration: none; }
 
         section { padding: 100px 5%; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; }
 
         .hero h1 { font-size: clamp(2.2rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 20px; }
         .hero p { max-width: 600px; font-size: 1.1rem; opacity: 0.8; border-left: 2px solid var(--cyan); padding-left: 20px; }
 
-        /* Mission Container */
+        /* Campaign Highlight */
+        .campaign-box {
+            background: var(--navy-light);
+            padding: 40px;
+            border-left: 4px solid var(--cyan);
+            margin: 40px 0;
+            max-width: 800px;
+        }
+
         .mission-container {
-            max-width: 900px;
+            max-width: 1000px;
             background: var(--glass);
             border: 1px solid var(--glass-border);
             padding: 60px 40px;
             margin: 40px auto;
             backdrop-filter: blur(10px);
         }
-        .mission-header h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 30px; color: var(--cyan); }
-        .mission-divider { height: 1px; width: 60px; background: var(--cyan); margin: 30px 0; }
 
-        .bottle-showcase { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; }
+        .bottle-showcase { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
         
         @media (max-width: 900px) {
             .bottle-showcase { grid-template-columns: 1fr; text-align: center; }
             .hero { text-align: center; align-items: center; }
             .hero p { border-left: none; border-top: 2px solid var(--cyan); padding: 20px 0 0 0; }
-            .mission-container { padding: 40px 20px; text-align: center; }
-            .mission-divider { margin: 30px auto; }
+            .contact-form { grid-template-columns: 1fr !important; }
         }
 
         .bottle-mockup {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            height: 400px; width: 200px; border-radius: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,229,255,0.05));
+            height: 500px; width: 220px; border-radius: 50px;
             border: 1px solid var(--glass-border);
             position: relative; margin: auto;
-            box-shadow: 0 0 50px rgba(0,229,255,0.1);
+            box-shadow: 0 0 80px rgba(0,229,255,0.05);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         
+        .bottle-mockup::after {
+            content: ''; position: absolute; top: 10%; width: 80%; height: 80%;
+            background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+            opacity: 0.1; pointer-events: none;
+        }
+
         .bottle-label {
-            position: absolute; top: 40%; width: 100%; height: 50px;
+            width: 100%; height: 70px;
             background: var(--cyan); color: var(--bg);
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Syncopate'; font-size: 0.6rem; transform: rotate(-5deg);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-family: 'Syncopate'; font-size: 0.7rem; transform: rotate(-3deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
-        .step-card { background: var(--glass); padding: 30px; border: 1px solid var(--glass-border); position: relative; }
-        .step-num { color: var(--cyan); font-family: 'Syncopate'; font-size: 2.5rem; opacity: 0.1; position: absolute; top: 10px; right: 20px; }
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .step-card { background: var(--glass); padding: 40px; border: 1px solid var(--glass-border); position: relative; overflow: hidden; }
+        .step-card:hover { border-color: var(--cyan); background: rgba(0,229,255,0.02); }
+        .step-num { color: var(--cyan); font-family: 'Syncopate'; font-size: 3rem; opacity: 0.05; position: absolute; top: 10px; right: 20px; }
 
-        .table-container { width: 100%; overflow-x: auto; margin-top: 30px; }
-        .comparison-table { width: 100%; min-width: 450px; border-collapse: collapse; background: var(--glass); }
-        .comparison-table th, .comparison-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--glass-border); }
-        .highlight-cell { color: var(--cyan); font-weight: bold; }
+        .btn { 
+            background: var(--cyan); color: var(--bg); padding: 20px 40px; 
+            font-family: 'Syncopate'; font-size: 0.8rem; text-decoration: none; 
+            display: inline-block; border: none; cursor: pointer; text-align: center;
+            font-weight: bold; letter-spacing: 2px;
+        }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,229,255,0.2); }
 
-        .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--glass); padding: 40px; border: 1px solid var(--glass-border); }
-        @media (max-width: 800px) { .contact-form { grid-template-columns: 1fr; padding: 20px; } nav div:last-child { display: none; } }
+        .contact-form { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; 
+            background: var(--glass); padding: 60px; border: 1px solid var(--glass-border); 
+        }
         
-        input, textarea, select { width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; margin-bottom: 15px; border-radius: 4px; }
-        .btn { background: var(--cyan); color: var(--bg); padding: 18px 35px; font-family: 'Syncopate'; font-size: 0.75rem; text-decoration: none; display: inline-block; border: none; cursor: pointer; text-align: center; }
+        input, textarea, select { 
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--glass-border); color: #fff; margin-bottom: 20px; 
+            font-family: 'Inter', sans-serif;
+        }
+        input:focus, select:focus { border-color: var(--cyan); outline: none; }
 
-        footer { padding: 40px 5%; text-align: center; opacity: 0.5; font-size: 0.7rem; border-top: 1px solid var(--glass-border); }
+        footer { padding: 60px 5%; text-align: center; opacity: 0.5; font-size: 0.75rem; border-top: 1px solid var(--glass-border); letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -110,82 +133,89 @@
     <div class="ambient-glow"></div>
 
     <nav>
-        <div class="logo">SIP UP MEDIA</div>
-        <div>
-            <a href="#contact" style="color: var(--cyan); text-decoration: none; font-size: 0.7rem; letter-spacing: 1px; font-weight: bold;">PARTNER NOW</a>
-        </div>
+        <a href="#" class="logo">SIP UP MEDIA</a>
+        <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.6rem;">PARTNER NOW</a>
     </nav>
 
     <section class="hero">
-        <p style="letter-spacing: 5px; color: var(--cyan); font-weight: 700; font-size: 0.8rem;">DON'T BE A DISTRACTION!</p>
-        <h1>MAKE REAL <br> IMPACT.</h1>
-        <p>We fund the <b>physical platforms</b> where Youth potential is realized. Whether they are competing, creating, or connecting, we provide unskippable hydration for the real world.</p>
-        <div style="margin-top: 30px; width: 100%; max-width: 300px;">
-            <a href="#mission" class="btn">READ THE MISSION</a>
+        <p style="letter-spacing: 5px; color: var(--cyan); font-weight: 700; font-size: 0.8rem;">SUMMER '26 CAMPAIGN</p>
+        <h1>BACK TO <br> THE GROUNDS.</h1>
+        <p>This April & May, we’re reclaiming the physical world. We place your brand directly into the hands of <b>Kottayam’s most active youth</b> through unskippable, premium hydration.</p>
+        
+        <div class="campaign-box">
+            <h3 style="color: var(--cyan); margin-bottom: 10px; font-size: 1rem;">PILOT PHASE ACTIVE</h3>
+            <p style="margin: 0; font-size: 0.9rem;">Get 50% Off your first batch. Help us fund the next generation of athletes and artists.</p>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <a href="#logic" class="btn">VIEW THE IMPACT</a>
         </div>
     </section>
 
     <section id="mission">
         <div class="mission-container">
-            <div class="mission-header">
-                <span style="font-family: 'Syncopate'; font-size: 0.7rem; color: var(--cyan); letter-spacing: 4px; display: block; margin-bottom: 10px;">A CLUBZONE ENTITY</span>
-                <h2>Life happens offline.</h2>
-            </div>
-            <div class="mission-content">
-                <p style="font-size: 1.2rem; margin-bottom: 20px;">
-                    <strong>Sip Up Media</strong> is the specialized media division of <strong>Clubzone</strong>—an entity dedicated to building a better social ecosystem through arts, sports, and cultural development. We believe that a society led by responsible, talented, and happy youth is a society that thrives.
-                </p>
-                <div class="mission-divider"></div>
-                <p style="opacity: 0.8; font-weight: 300;">
-                    While the world migrates into the virtual, we are doubling down on the physical. We monetize artistic, cultural, and sporting excellence to fund the environments where youth actually live, breathe, and grow. Our bottles aren't just hydration; they are the fuel for a generation coming back to real life.
-                </p>
-            </div>
+            <span style="font-family: 'Syncopate'; font-size: 0.7rem; color: var(--cyan); letter-spacing: 4px;">POWERED BY CLUBZONE</span>
+            <h2 style="margin-top: 20px;">WE FUND THE FUTURE.</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin: 30px 0;">
+                Sip Up Media is more than an agency. We are the revenue engine for <strong>Clubzone</strong>, dedicated to building a social ecosystem where youth talent thrives offline.
+            </p>
+            <p style="opacity: 0.7; font-weight: 300; border-top: 1px solid var(--glass-border); padding-top: 30px;">
+                While others fight for screen time, we own the ground time. We monetize branded hydration to build better sports facilities, arts platforms, and cultural hubs in Kottayam.
+            </p>
         </div>
     </section>
 
     <section id="logic">
         <div class="bottle-showcase">
             <div class="bottle-mockup">
-                <div class="bottle-label">YOUR LOGO</div>
+                <div style="margin-bottom: 20px; opacity: 0.5; font-size: 0.6rem;">PREMIUM PLASTIC</div>
+                <div class="bottle-label">
+                    <span>YOUR LOGO</span>
+                    <span style="font-size: 0.4rem; margin-top: 5px;">OFFICIAL PARTNER</span>
+                </div>
             </div>
             <div>
-                <h2>100% OPEN RATE</h2>
-                <p>Digital fatigue is real. A cold bottle in a student's hand during a high-stakes event isn't just water—it's 45 minutes of focused brand interaction.</p>
-                <div class="table-container">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr><th>METRIC</th><th>DIGITAL</th><th>SIP UP</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Engagement</td><td>0.5% CTR</td><td class="highlight-cell">100% HOLD</td></tr>
-                            <tr><td>Longevity</td><td>2 Sec</td><td class="highlight-cell">45 MIN+</td></tr>
-                        </tbody>
-                    </table>
+                <h2 style="color: var(--cyan);">PHYSICAL > DIGITAL</h2>
+                <p>Digital ads are a 0.5s distraction. A cold bottle in the heat of a tournament is a 20-minute brand relationship.</p>
+                
+                <div style="background: var(--glass); padding: 30px; margin-top: 30px; border: 1px solid var(--glass-border);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span>Engagement Time</span>
+                        <span style="color: var(--cyan);">20 - 45 MINS</span>
+                    </div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1);">
+                        <div style="width: 100%; height: 100%; background: var(--cyan);"></div>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span>Recall Rate</span>
+                        <span style="color: var(--cyan);">92% UNMATCHED</span>
+                    </div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1);">
+                        <div style="width: 92%; height: 100%; background: var(--cyan);"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="how">
-        <div style="margin-bottom: 50px;">
-            <p style="letter-spacing: 5px; color: var(--cyan); font-weight: 700; font-size: 0.8rem; margin-bottom: 10px;">THE MECHANISM</p>
-            <h2>OUR PROCESS</h2>
-        </div>
+        <h2 style="text-align: center; margin-bottom: 60px;">THE MECHANISM</h2>
         <div class="step-grid">
             <div class="step-card">
                 <span class="step-num">01</span>
-                <h3>IDENTIFY</h3>
-                <p>We scout high-energy physical hubs—from competitive tournaments to creative summits—where youth talent is most focused and active.</p>
+                <h3>ACTIVATE</h3>
+                <p>We deploy 1,000 premium branded bottles per batch at high-traffic Kottayam tournaments.</p>
             </div>
             <div class="step-card">
                 <span class="step-num">02</span>
-                <h3>ACTIVATE</h3>
-                <p>We fund the event infrastructure and deploy the "Media Bottle." Your brand moves from a screen into the literal hands of the next generation.</p>
+                <h3>ENGAGE</h3>
+                <p>We run bespoke challenges—from Football Crossbars to Fitness tests—customized for your brand goals.</p>
             </div>
             <div class="step-card">
                 <span class="step-num">03</span>
-                <h3>MONETIZE</h3>
-                <p>We convert brand presence into event capital. By monetizing artistic, cultural, and sports talent, we create a sustainable ecosystem where youth excellence is rewarded.</p>
+                <h3>CONNECT</h3>
+                <p>Integrated QR codes on every label drive high-intent leads straight to your website or WhatsApp.</p>
             </div>
         </div>
     </section>
@@ -193,28 +223,71 @@
     <section id="contact">
         <div class="contact-form">
             <div>
-                <h2>PARTNER</h2>
-                <p style="opacity: 0.6; font-size: 0.9rem;">Claim your territory. Our directors respond within 24h.</p>
+                <h2 style="color: var(--cyan);">PILOT PARTNER</h2>
+                <p style="opacity: 0.7;">
+                    Claim 1 of our 4 exclusive Summer Batch slots. <br><br>
+                    <strong>Pilot Price:</strong> ₹8,000 / Batch <br>
+                    <strong>Includes:</strong> 1000 Bottles + Live Activation.
+                </p>
             </div>
-            <form>
-                <input type="text" placeholder="ORGANIZATION NAME" required>
-                <select required>
+            <form id="waForm">
+                <input type="text" id="org" placeholder="BUSINESS NAME" required>
+                
+                <select id="sector" required>
                     <option value="" disabled selected>YOUR SECTOR</option>
-                    <option>CONSUMER BRAND (FMCG)</option>
-                    <option>TECH & INNOVATION</option>
-                    <option>INDUSTRIAL & LOGISTICS</option>
-                    <option>EDUCATION & CAREERS</option>
-                    <option>LIFESTYLE & APPAREL</option>
+                    <option value="Education/IELTS">Education & IELTS</option>
+                    <option value="Turf/Sports">Sports & Turfs</option>
+                    <option value="Cafe/Retail">Cafe & Retail</option>
+                    <option value="Other">Other</option>
                 </select>
-                <textarea rows="4" placeholder="HOW CAN WE HELP?"></textarea>
-                <button type="submit" class="btn">REQUEST DATA SHEET</button>
+
+                <select id="challenge" required>
+                    <option value="" disabled selected>SELECT CHALLENGE</option>
+                    <option value="Football Skill">Football Skill (Crossbar)</option>
+                    <option value="Fitness Challenge">Fitness (Plank/Pushups)</option>
+                    <option value="Brand Specific">Custom Brand Activation</option>
+                </select>
+
+                <select id="batchCount" required>
+                    <option value="" disabled selected>HOW MANY BATCHES?</option>
+                    <option value="1 Batch (1000 Bottles)">1 Batch (Pilot: ₹8000)</option>
+                    <option value="2 Batches (2000 Bottles)">2 Batches (₹16000)</option>
+                    <option value="4 Batches (Full Season)">4 Batches (Season Pass)</option>
+                </select>
+
+                <textarea id="msg" rows="3" placeholder="YOUR GOALS FOR THE CAMPAIGN..."></textarea>
+                
+                <button type="submit" class="btn" style="width: 100%;">REQUEST DATA SHEET via WHATSAPP</button>
             </form>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 SIP UP MEDIA | A CLUBZONE ENTITY
+        &copy; 2026 SIP UP MEDIA | A CLUBZONE ENTITY <br>
+        <span style="opacity: 0.5; margin-top: 10px; display: block;">KOTTAYAM, KERALA</span>
     </footer>
+
+    <script>
+        document.getElementById('waForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const phone = "918304848805"; // REPLACE WITH YOUR NUMBER
+            
+            const org = document.getElementById('org').value;
+            const sector = document.getElementById('sector').value;
+            const chall = document.getElementById('challenge').value;
+            const batch = document.getElementById('batchCount').value;
+            const note = document.getElementById('msg').value;
+
+            const text = `*SIP UP MEDIA | PARTNER INQUIRY*%0A%0A` +
+                         `*Org:* ${org}%0A` +
+                         `*Sector:* ${sector}%0A` +
+                         `*Batches:* ${batch}%0A` +
+                         `*Challenge:* ${chall}%0A` +
+                         `*Message:* ${note}`;
+
+            window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank');
+        });
+    </script>
 
 </body>
 </html>
